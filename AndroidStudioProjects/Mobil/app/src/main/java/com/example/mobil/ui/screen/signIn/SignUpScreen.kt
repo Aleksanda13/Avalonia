@@ -53,7 +53,6 @@ fun SignUpScreen() {
                     .height(40.dp)
             ) {
                 IconButton(onClick = {
-                    // Вернуться на экран входа
                 }) {
                     Icon(
                         painter = painterResource(R.drawable.back_arrow),
@@ -62,6 +61,7 @@ fun SignUpScreen() {
                 }
             }
         },
+
         bottomBar = {
             Row(
                 horizontalArrangement = Arrangement.Center,
@@ -77,7 +77,7 @@ fun SignUpScreen() {
                 )
                 Text(
                     text = " Войти",
-                    style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.accent),
+                    style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.text),
                     modifier = Modifier
                         .padding(start = 4.dp)
                         .clickable {
@@ -97,6 +97,7 @@ fun SignUpContent(paddingValues: PaddingValues) {
             .padding(paddingValues = paddingValues)
             .fillMaxWidth()
     ) {
+
         TitleWithSubtitleText(
             title = stringResource(R.string.registration),
             subTitle = stringResource(R.string.sign_up_subtitle)
@@ -107,6 +108,7 @@ fun SignUpContent(paddingValues: PaddingValues) {
         val password = remember { mutableStateOf("") }
         val isChecked = remember { mutableStateOf(false) }
 
+        Spacer(modifier = Modifier.height(32.dp))
         AuthTextField(
             labelText = stringResource(R.string.name),
             placeholder = stringResource(R.string.template_name),
@@ -131,9 +133,9 @@ fun SignUpContent(paddingValues: PaddingValues) {
             value = password.value,
             onChangeValue = {
                 password.value = it
-            }
+            },
+            isPassword = true
         )
-
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -142,6 +144,7 @@ fun SignUpContent(paddingValues: PaddingValues) {
                     isChecked.value = !isChecked.value
                 }
         ) {
+            Spacer(modifier = Modifier.padding(10.dp))
             Icon(
                 painter = if (isChecked.value) {
                     painterResource(R.drawable.ic_checked)
@@ -155,9 +158,13 @@ fun SignUpContent(paddingValues: PaddingValues) {
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = "Даю согласие на обработку\nперсональных данных",
-                style = TextStyle(textDecoration = TextDecoration.Underline),
+                style = MatuleTheme.typography.bodyRegular14.copy(
+                    color = MatuleTheme.colors.hint,
+                    textDecoration = TextDecoration.Underline
+                ),
                 modifier = Modifier.padding(start = 4.dp)
             )
+
         }
 
         // Кнопка регистрации

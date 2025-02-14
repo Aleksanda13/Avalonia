@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -83,12 +84,16 @@ fun SignInScreen() {
 @Composable
 fun SignInContent(paddingValues: PaddingValues) {
     Column(
-        modifier = Modifier.padding(paddingValues = paddingValues)
+        modifier = Modifier
+            .padding(paddingValues = paddingValues)
+            .fillMaxWidth()
     ) {
         TitleWithSubtitleText(
             title = stringResource(R.string.hello),
             subTitle = stringResource(R.string.sign_in_subtitle)
         )
+
+        // Поле Email
         val email = remember { mutableStateOf("") }
         AuthTextField(
             labelText = stringResource(R.string.email),
@@ -98,6 +103,9 @@ fun SignInContent(paddingValues: PaddingValues) {
                 email.value = it
             }
         )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         val password = remember { mutableStateOf("") }
         val passwordVisible = remember { mutableStateOf(false) }
         AuthTextField(
@@ -110,8 +118,20 @@ fun SignInContent(paddingValues: PaddingValues) {
             isPassword = true,
             passwordVisible = passwordVisible
         )
+
+        Text(
+            text = stringResource(R.string.restore_password),
+            style = MatuleTheme.typography.bodyRegular12.copy(color = MatuleTheme.colors.subTextDark),
+            modifier = Modifier
+                .padding(end = 20.dp, top = 8.dp)
+                .align(Alignment.End)
+                .clickable {
+                }
+        )
+
+        Spacer(modifier = Modifier.height(32.dp))
         CommonButton(
-            modifier = Modifier.padding(top = 50.dp),
+            modifier = Modifier.padding(top = 10.dp),
             buttonLabel = stringResource(R.string.sign_in)
         ) {
         }
