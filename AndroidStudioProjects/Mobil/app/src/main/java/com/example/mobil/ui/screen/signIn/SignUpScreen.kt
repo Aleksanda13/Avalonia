@@ -1,6 +1,5 @@
 package com.example.mobil.ui.screen.signIn
 
-import com.example.mobil.ui.screen.signIn.AuthTextField
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -33,7 +32,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -167,12 +165,10 @@ fun SignUpContent(paddingValues: PaddingValues) {
 
         }
 
-        // Кнопка регистрации
         CommonButton(
             modifier = Modifier.padding(top = 50.dp),
             buttonLabel = "Зарегистрироваться",
             onClick = {
-                // Логика регистрации
             }
         )
     }

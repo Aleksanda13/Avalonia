@@ -74,7 +74,6 @@ fun ForgotPasswordScreen() {
                     .padding(top = 20.dp),
                 buttonLabel = stringResource(R.string.send),
                 onClick = {
-                    // Логика восстановления пароля
                 }
             )
         }
